@@ -1,0 +1,87 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Cài đặt biến tần Luxpower",
+        "description": "Vui lòng nhập thông tin kết nối cho dongle WiFi của biến tần.",
+        "data": {
+          "host": "Địa chỉ IP",
+          "port": "Cổng kết nối",
+          "dongle_serial": "Số serial dongle WiFi (BAXXXXXXXX)",
+          "inverter_serial": "Số serial biến tần (XXXXXXXXX)",
+          "poll_interval": "Chu kỳ cập nhật (giây)",
+          "entity_prefix": "Tiền tố thực thể (Tùy chọn)",
+          "rated_power": "Công suất định mức biến tần (Watt)",
+          "read_only": "Chế độ chỉ đọc",
+          "register_block_size": "Kích thước khối thanh ghi",
+          "connection_retries": "Số lần thử kết nối lại",
+          "enable_device_grouping": "Bật nhóm thiết bị",
+          "battery_entities": "Thực thể pin"
+        },
+        "data_description": {
+          "host": "Địa chỉ IP của dongle WiFi biến tần.",
+          "port": "Cổng giao tiếp, thường là 8000.",
+          "dongle_serial": "Số serial 10 ký tự của dongle WiFi.",
+          "inverter_serial": "Số serial 10 ký tự của biến tần.",
+          "poll_interval": "Tần suất truy vấn dữ liệu từ biến tần. Giá trị thấp hơn cho cập nhật nhanh hơn nhưng tốn băng thông hơn.",
+          "entity_prefix": "Tiền tố tùy chỉnh cho tên tất cả thực thể (ví dụ: 'LXP'). Để trống nếu không cần.",
+          "rated_power": "Công suất định mức của biến tần tính bằng Watt (ví dụ: 5000 cho biến tần 5kW). Dùng cho tính toán.",
+          "read_only": "Nếu bật, tất cả điều khiển tương tác (công tắc, số, lựa chọn...) sẽ được thay thế bằng cảm biến chỉ đọc. Cho phép giám sát tất cả cài đặt mà không thể thay đổi.",
+          "register_block_size": "Kích thước khối đọc thanh ghi. Dùng 125 (mặc định) cho hầu hết biến tần. Dùng 40 cho firmware cũ không hỗ trợ đọc khối lớn.",
+          "connection_retries": "Số lần thử kết nối lại trước khi bỏ cuộc (mặc định là 3).",
+          "enable_device_grouping": "Nhóm các thực thể vào thiết bị con (PV, Lưới, EPS, Máy phát, Pin) để dễ quản lý hơn.",
+          "battery_entities": "Đặt 'none' để tắt, 'auto' để tự động phát hiện pin, hoặc nhập các số serial pin cách nhau bằng dấu phẩy."
+        }
+      }
+    },
+    "error": {
+      "model_fetch_failed": "Không thể đọc model biến tần. Vui lòng kiểm tra lại địa chỉ IP, cổng và số serial.",
+      "invalid_serial": "Số serial phải đúng 10 ký tự.",
+      "invalid_connection_retries": "Số lần thử kết nối lại phải từ 1 đến 10."
+    },
+    "abort": {
+      "already_configured": "Biến tần này đã được cấu hình rồi."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Cấu hình biến tần Luxpower",
+        "description": "Cập nhật cài đặt cho biến tần của bạn.",
+        "data": {
+          "host": "Địa chỉ IP",
+          "port": "Cổng kết nối",
+          "dongle_serial": "Số serial dongle WiFi",
+          "inverter_serial": "Số serial biến tần",
+          "poll_interval": "Chu kỳ cập nhật (giây)",
+          "entity_prefix": "Tiền tố thực thể (Tùy chọn)",
+          "rated_power": "Công suất định mức biến tần (Watt)",
+          "read_only": "Chế độ chỉ đọc",
+          "register_block_size": "Kích thước khối thanh ghi",
+          "connection_retries": "Số lần thử kết nối lại",
+          "enable_device_grouping": "Bật nhóm thiết bị",
+          "battery_entities": "Thực thể pin"
+        },
+        "data_description": {
+          "host": "Địa chỉ IP của dongle WiFi biến tần.",
+          "port": "Cổng giao tiếp, thường là 8000.",
+          "dongle_serial": "Số serial 10 ký tự của dongle WiFi.",
+          "inverter_serial": "Số serial 10 ký tự của biến tần.",
+          "poll_interval": "Tần suất truy vấn dữ liệu từ biến tần. Giá trị thấp hơn cho cập nhật nhanh hơn nhưng tốn băng thông hơn.",
+          "entity_prefix": "Tiền tố tùy chỉnh cho tên tất cả thực thể (ví dụ: 'LXP'). Để trống nếu không cần.",
+          "rated_power": "Công suất định mức của biến tần tính bằng Watt (ví dụ: 5000 cho biến tần 5kW). Dùng cho tính toán.",
+          "read_only": "Nếu bật, tất cả điều khiển tương tác (công tắc, số, lựa chọn...) sẽ được thay thế bằng cảm biến chỉ đọc. Cho phép giám sát tất cả cài đặt mà không thể thay đổi.",
+          "register_block_size": "Kích thước khối đọc thanh ghi. Dùng 125 (mặc định) cho hầu hết biến tần. Dùng 40 cho firmware cũ không hỗ trợ đọc khối lớn.",
+          "connection_retries": "Số lần thử kết nối lại trước khi bỏ cuộc (mặc định là 3).",
+          "enable_device_grouping": "Nhóm các thực thể vào thiết bị con (PV, Lưới, EPS, Máy phát, Pin) để dễ quản lý hơn.",
+          "battery_entities": "Đặt 'none' để tắt, 'auto' để tự động phát hiện pin, hoặc nhập các số serial pin cách nhau bằng dấu phẩy."
+        }
+      }
+    },
+    "error": {
+      "model_fetch_failed": "Không thể đọc model biến tần. Vui lòng kiểm tra lại địa chỉ IP, cổng và số serial.",
+      "invalid_serial": "Số serial phải đúng 10 ký tự.",
+      "invalid_connection_retries": "Số lần thử kết nối lại phải từ 1 đến 10."
+    }
+  }
+}
