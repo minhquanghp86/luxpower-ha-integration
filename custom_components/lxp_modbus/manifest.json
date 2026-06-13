@@ -8,5 +8,5 @@
   "iot_class": "local_polling",
   "issue_tracker": "https://github.com/minhquanghp86/luxpower-ha-integration/issues",
   "requirements": ["voluptuous"],
-  "version": "1.0.2"
+  "version": "1.0.3"
 }
