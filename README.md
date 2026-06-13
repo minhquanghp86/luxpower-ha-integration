@@ -1,4 +1,5 @@
 # Tích hợp LuxPower Modbus cho Home Assistant
+# Đây là bản dịch sang Tiếng Việt dựa trên repo gốc https://github.com/ant0nkr/luxpower-ha-integration
 
 [![HACS Default](https://img.shields.io/badge/HACS-Default-blue.svg?style=for-the-badge)](https://github.com/hacs/integration)
 [![GitHub Release](https://img.shields.io/github/v/release/ant0nkr/luxpower-ha-integration?style=for-the-badge)](https://github.com/ant0nkr/luxpower-ha-integration/releases)
