@@ -7,7 +7,7 @@ BINARY_SENSOR_TYPES = [
         # the inverter is currently grid-tied or intentionally islanding.
         # I_FAC (register 15) is the grid-input frequency in 0.01 Hz units.
         # It reads 0 when no grid AC is present and ~5000-6000 when the grid is live.
-        "name": "Đã kết nối lưới điện",
+        "name": "Kết nối lưới",
         "register_type": "calculated",
         "depends_on": [I_FAC],
         "extract": lambda registers, entry: registers.get(I_FAC, 0) > 0,
@@ -61,5 +61,4 @@ BINARY_SENSOR_TYPES = [
         "device_group": "Pin",
         "master_only": True,
     },
-
 ]
