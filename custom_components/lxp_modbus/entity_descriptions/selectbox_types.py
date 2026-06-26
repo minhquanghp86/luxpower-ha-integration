@@ -3,7 +3,7 @@ from ..utils import get_bits, set_bits
 
 SELECTBOX_TYPES = [
     {
-        "name": "Kiểu sạc AC",
+        "name": "Chế độ sạc AC",
         "register": H_SYSTEM_ENABLE_2,   # 120
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 1, 3),
@@ -22,7 +22,7 @@ SELECTBOX_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Kiểu điều khiển xả",
+        "name": "Chế độ điều khiển xả",
         "register": H_SYSTEM_ENABLE_2,   # 120
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 4, 2),
@@ -70,7 +70,7 @@ SELECTBOX_TYPES = [
         "device_group": "Máy phát",
     },
     {
-        "name": "Kiểu hệ thống",
+        "name": "Cấu hình hệ thống",
         "register": H_SET_SYSTEM_TYPE,    # 112
         "register_type": "hold",
         "extract": lambda reg: reg,
@@ -103,7 +103,7 @@ SELECTBOX_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Mô hình đầu vào PV",
+        "name": "Cấu hình đầu vào PV",
         "register": H_PV_INPUT_MODEL, # 20
         "register_type": "hold",
         "extract": lambda reg: reg,
@@ -249,7 +249,7 @@ SELECTBOX_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Cài điện áp EPS",
+        "name": "Điện áp EPS",
         "register": H_EPS_VOLTAGE_SET,
         "register_type": "hold",
         "icon": "mdi:power-socket-us",
@@ -268,7 +268,7 @@ SELECTBOX_TYPES = [
         "device_group": "EPS (Off-Grid)",
     },
     {
-        "name": "Cài tần số EPS",
+        "name": "Tần số EPS",
         "register": H_EPS_FREQ_SET,
         "register_type": "hold",
         "icon": "mdi:sine-wave",
@@ -284,7 +284,7 @@ SELECTBOX_TYPES = [
         "device_group": "EPS (Off-Grid)",
     },
     {
-        "name": "Pha tổng hợp (Off-Grid)",
+        "name": "Pha ghép (Off-Grid)",
         "register": H_SET_COMPOSED_PHASE,
         "register_type": "hold",
         "icon": "mdi:chart-timeline-variant",
