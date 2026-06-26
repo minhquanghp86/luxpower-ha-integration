@@ -1,7 +1,3 @@
-#
-# entity_descriptions/sensor_types.py
-#
-
 from ..constants.input_registers import *
 from ..constants.hold_registers import H_NO_FULL_CHG_DAY_CONFIG, H_BOOTLOADER_VERSION_AND_FLAG
 from ..constants.battery_registers import *
@@ -33,7 +29,7 @@ SENSOR_TYPES = [
         "master_only": False,
     },
     {
-        "name": "Luồng năng lượng",
+        "name": "Công suất phụ tải",
         "register_type": "calculated",
         "depends_on": [I_PDISCHARGE, I_PTOUSER, I_PTOUSER_S, I_PTOUSER_T, I_PTOUSER_L1N, I_PTOUSER_L2N, I_PPV1, I_PPV2, I_PPV3, I_PPV4, I_PPV5, I_PPV6],
         "unit": "W",
@@ -55,7 +51,7 @@ SENSOR_TYPES = [
         "master_only": False,
     },
     {
-        "name": "Luồng pin",
+        "name": "Công suất pin",
         "register_type": "calculated",
         "depends_on": [I_PCHARGE, I_PDISCHARGE],
         "unit": "W",
@@ -72,7 +68,7 @@ SENSOR_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Luồng lưới",
+        "name": "Công suất lưới",
         "register_type": "calculated",
         "depends_on": [I_PTOGRID, I_PTOUSER],
         "unit": "W",
@@ -88,7 +84,6 @@ SENSOR_TYPES = [
         "master_only": False,
         "device_group": "Lưới điện",
     },
-
     # --- State Sensors ---
     {
         "name": "Trạng thái biến tần",
@@ -136,14 +131,14 @@ SENSOR_TYPES = [
         "name": "Loại đầu vào AC",
         "register": I_AC_INPUT_TYPE_FLAGS,
         "register_type": "input",
-        "extract": lambda value: value & 1, # Extracts Bit 0 from the register
+        "extract": lambda value: value & 1,
         "icon": "mdi:power-source",
         "enabled": True,
         "visible": True,
         "default": "Lưới điện",
         "options": {
-            0: "Lưới điện", # 0 indicates Grid input
-            1: "Máy phát" # 1 indicates Generator input
+            0: "Lưới điện",
+            1: "Máy phát"
         },
         "master_only": False,
     },
@@ -525,7 +520,7 @@ SENSOR_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Số ngày kể từ SOC >= 99",
+        "name": "Số ngày chưa sạc đầy",
         "register": H_NO_FULL_CHG_DAY_CONFIG,
         "register_type": "hold",
         "extract": lambda value: value & 0xFF,
@@ -773,7 +768,7 @@ SENSOR_TYPES = [
         "master_only": False,
     },
     {
-        "name": "Công suất chỉnh lưu sạc AC",
+        "name": "Công suất sạc từ lưới",
         "register": I_PREC,
         "register_type": "input",
         "extract": lambda value: value,
@@ -881,20 +876,20 @@ SENSOR_TYPES = [
         "master_only": False,
     },
     {
-         "name": "Công suất phản kháng",
-         "register": I_QINV,
-         "register_type": "input",
-         "extract": lambda value: value if value < 32768 else value - 65536,
-         "unit": "var",
-         "device_class": "reactive_power",
-         "state_class": "measurement",
-         "scale": 1.0,
-         "icon": "mdi:flash",
-         "suggested_display_precision": 0,
-         "enabled": True,
-         "visible": True,
-         "master_only": False,
-     },
+        "name": "Công suất phản kháng",
+        "register": I_QINV,
+        "register_type": "input",
+        "extract": lambda value: value if value < 32768 else value - 65536,
+        "unit": "var",
+        "device_class": "reactive_power",
+        "state_class": "measurement",
+        "scale": 1.0,
+        "icon": "mdi:flash",
+        "suggested_display_precision": 0,
+        "enabled": True,
+        "visible": True,
+        "master_only": False,
+    },
     {
         "name": "Công suất phát lưới",
         "register": I_PTOGRID,
@@ -1364,7 +1359,7 @@ SENSOR_TYPES = [
         "master_only": False,
     },
     {
-        "name": "Điện sạc AC hôm nay",
+        "name": "Điện sạc từ lưới hôm nay",
         "register": I_EREC_DAY,
         "register_type": "input",
         "extract": lambda value: value,
@@ -1692,7 +1687,7 @@ SENSOR_TYPES = [
         "device_group": "Máy phát",
     },
     {
-        "name": "Thời gian sạc 1 chạm còn lại",
+        "name": "Thời gian sạc nhanh còn lại",
         "register": I_REMAINING_CHARGE_TIME,
         "register_type": "input",
         "extract": lambda value: value,
@@ -1715,10 +1710,10 @@ SENSOR_TYPES = [
         "unit": "V",
         "device_class": "voltage",
         "state_class": "measurement",
-        "scale": 0.1, # Unit is 0.1V
+        "scale": 0.1,
         "icon": "mdi:bus-school",
         "suggested_display_precision": 1,
-        "enabled": True,  # Typically for diagnostics
+        "enabled": True,
         "visible": True,
         "master_only": False,
     },
@@ -1730,11 +1725,11 @@ SENSOR_TYPES = [
         "unit": "V",
         "device_class": "voltage",
         "state_class": "measurement",
-        "scale": 0.1, # Unit is 0.1V
+        "scale": 0.1,
         "icon": "mdi:bus-school",
         "suggested_display_precision": 1,
-        "enabled": True, # Typically for diagnostics
-        "visible": True, 
+        "enabled": True,
+        "visible": True,
         "master_only": False,
     },
     {
@@ -1745,10 +1740,10 @@ SENSOR_TYPES = [
         "unit": "V",
         "device_class": "voltage",
         "state_class": "measurement",
-        "scale": 0.1, # Unit is 0.1V
+        "scale": 0.1,
         "icon": "mdi:bus-school",
         "suggested_display_precision": 1,
-        "enabled": True, # Typically for diagnostics
+        "enabled": True,
         "visible": True,
         "master_only": False,
     },
@@ -1785,7 +1780,7 @@ SENSOR_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Điện áp tham chiếu sạc BMS",
+        "name": "Điện áp sạc tham chiếu BMS",
         "register": I_BMS_CHARGE_VOLT_REF,
         "register_type": "input",
         "extract": lambda value: value,
@@ -1801,7 +1796,7 @@ SENSOR_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Điện áp ngừng xả BMS",
+        "name": "Điện áp cắt xả BMS",
         "register": I_BMS_DISCHG_CUT_VOLT,
         "register_type": "input",
         "extract": lambda value: value,
@@ -1817,7 +1812,7 @@ SENSOR_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Số cụm pin song song",
+        "name": "Số chuỗi pin song song",
         "register": I_BAT_PARALLEL_NUM,
         "register_type": "input",
         "extract": lambda value: value,
@@ -2131,21 +2126,21 @@ SENSOR_TYPES = [
         "device_group": "Pin",
     },
     {
-         "name": "Điện áp pin mẫu biến tần",
-         "register": I_INV_BAT_VOLT_SAMPLE,
-         "register_type": "input",
-         "extract": lambda value: value,
-         "unit": "V",
-         "device_class": "voltage",
-         "state_class": "measurement",
-         "scale": 0.1,
-         "icon": "mdi:battery-scan",
-         "suggested_display_precision": 1,
-         "enabled": True,
-         "visible": True,
-         "master_only": True,
+        "name": "Điện áp pin đo tại biến tần",
+        "register": I_INV_BAT_VOLT_SAMPLE,
+        "register_type": "input",
+        "extract": lambda value: value,
+        "unit": "V",
+        "device_class": "voltage",
+        "state_class": "measurement",
+        "scale": 0.1,
+        "icon": "mdi:battery-scan",
+        "suggested_display_precision": 1,
+        "enabled": True,
+        "visible": True,
+        "master_only": True,
         "device_group": "Pin",
-     },
+    },
 
     # --- Faults & Warnings ---
     {
@@ -2162,7 +2157,7 @@ SENSOR_TYPES = [
         "master_only": False,
     },
     {
-        "name": "Lỗi đang hoạt động (Mã)",
+        "name": "Mã lỗi hiện tại",
         "register_type": "calculated",
         "depends_on": [I_FAULT_CODE_L, I_FAULT_CODE_H],
         "icon": "mdi:numeric",
@@ -2174,7 +2169,7 @@ SENSOR_TYPES = [
         "master_only": False,
     },
     {
-        "name": "Lỗi đang hoạt động (Mô tả)",
+        "name": "Mô tả lỗi hiện tại",
         "register_type": "calculated",
         "depends_on": [I_FAULT_CODE_L, I_FAULT_CODE_H],
         "icon": "mdi:alert-circle-outline",
@@ -2188,7 +2183,7 @@ SENSOR_TYPES = [
         "master_only": False,
     },
     {
-        "name": "Cảnh báo đang hoạt động (Mã)",
+        "name": "Mã cảnh báo hiện tại",
         "register_type": "calculated",
         "depends_on": [I_WARNING_CODE_L, I_WARNING_CODE_H],
         "icon": "mdi:numeric",
@@ -2200,7 +2195,7 @@ SENSOR_TYPES = [
         "master_only": False,
     },
     {
-        "name": "Cảnh báo đang hoạt động (Mô tả)",
+        "name": "Mô tả cảnh báo hiện tại",
         "register_type": "calculated",
         "depends_on": [I_WARNING_CODE_L, I_WARNING_CODE_H],
         "icon": "mdi:alert-outline",
@@ -2358,37 +2353,37 @@ SENSOR_TYPES = [
         "device_group": "Pin mặt trời",
     },
     {
-         "name": "Tổng sản lượng PV5",
-         "register_type": "calculated",
-         "depends_on": [I_EPV5_ALL_L, I_EPV5_ALL_H],
-         "extract": lambda registers, entry: (registers.get(I_EPV5_ALL_H, 0) << 16) | registers.get(I_EPV5_ALL_L, 0),
-         "unit": "kWh",
-         "device_class": "energy",
-         "state_class": "total_increasing",
-         "scale": 0.1,
-         "icon": "mdi:solar-power",
-         "suggested_display_precision": 1,
-         "enabled": True,
-         "visible": True,
-         "master_only": False,
+        "name": "Tổng sản lượng PV5",
+        "register_type": "calculated",
+        "depends_on": [I_EPV5_ALL_L, I_EPV5_ALL_H],
+        "extract": lambda registers, entry: (registers.get(I_EPV5_ALL_H, 0) << 16) | registers.get(I_EPV5_ALL_L, 0),
+        "unit": "kWh",
+        "device_class": "energy",
+        "state_class": "total_increasing",
+        "scale": 0.1,
+        "icon": "mdi:solar-power",
+        "suggested_display_precision": 1,
+        "enabled": True,
+        "visible": True,
+        "master_only": False,
         "device_group": "Pin mặt trời",
-     },
-     {
-         "name": "Tổng sản lượng PV6",
-         "register_type": "calculated",
-         "depends_on": [I_EPV6_ALL_L, I_EPV6_ALL_H],
-         "extract": lambda registers, entry: (registers.get(I_EPV6_ALL_H, 0) << 16) | registers.get(I_EPV6_ALL_L, 0),
-         "unit": "kWh",
-         "device_class": "energy",
-         "state_class": "total_increasing",
-         "scale": 0.1,
-         "icon": "mdi:solar-power",
-         "suggested_display_precision": 1,
-         "enabled": True,
-         "visible": True,
-         "master_only": False,
+    },
+    {
+        "name": "Tổng sản lượng PV6",
+        "register_type": "calculated",
+        "depends_on": [I_EPV6_ALL_L, I_EPV6_ALL_H],
+        "extract": lambda registers, entry: (registers.get(I_EPV6_ALL_H, 0) << 16) | registers.get(I_EPV6_ALL_L, 0),
+        "unit": "kWh",
+        "device_class": "energy",
+        "state_class": "total_increasing",
+        "scale": 0.1,
+        "icon": "mdi:solar-power",
+        "suggested_display_precision": 1,
+        "enabled": True,
+        "visible": True,
+        "master_only": False,
         "device_group": "Pin mặt trời",
-     },
+    },
     {
         "name": "Tổng sản lượng PV",
         "register_type": "calculated",
@@ -2435,7 +2430,7 @@ SENSOR_TYPES = [
         "master_only": False,
     },
     {
-        "name": "Tổng điện sạc AC",
+        "name": "Tổng điện sạc từ lưới",
         "register_type": "calculated",
         "depends_on": [I_EREC_ALL_L, I_EREC_ALL_H],
         "extract": lambda registers, entry: (registers.get(I_EREC_ALL_H, 0) << 16) | registers.get(I_EREC_ALL_L, 0),
@@ -2949,7 +2944,6 @@ SENSOR_TYPES = [
         "visible": True,
         "master_only": False,
     },
-
 ]
 
 # --- Battery Sensor Types (register range 5000+) ---
@@ -3070,7 +3064,7 @@ BATTERY_SENSOR_TYPES = [
         "register": B_MAX_CELL_TEMP,
         "register_type": "battery",
         "extract": lambda value: value,
-        "unit": "\u00b0C",
+        "unit": "°C",
         "device_class": "temperature",
         "state_class": "measurement",
         "scale": 0.1,
@@ -3084,7 +3078,7 @@ BATTERY_SENSOR_TYPES = [
         "register": B_MIN_CELL_TEMP,
         "register_type": "battery",
         "extract": lambda value: value,
-        "unit": "\u00b0C",
+        "unit": "°C",
         "device_class": "temperature",
         "state_class": "measurement",
         "scale": 0.1,
@@ -3139,7 +3133,7 @@ BATTERY_SENSOR_TYPES = [
         "visible": True,
     },
     {
-        "name": "Cell nhiệt độ thấp nhất",
+        "name": "Cell có nhiệt độ thấp nhất",
         "register": B_TEMP_CELLS,
         "register_type": "battery",
         "extract": lambda value: (value >> 8) & 0xFF,
@@ -3149,7 +3143,7 @@ BATTERY_SENSOR_TYPES = [
         "visible": True,
     },
     {
-        "name": "Cell nhiệt độ cao nhất",
+        "name": "Cell có nhiệt độ cao nhất",
         "register": B_TEMP_CELLS,
         "register_type": "battery",
         "extract": lambda value: value & 0xFF,
@@ -3159,7 +3153,7 @@ BATTERY_SENSOR_TYPES = [
         "visible": True,
     },
     {
-        "name": "Cell điện áp thấp nhất",
+        "name": "Cell có điện áp thấp nhất",
         "register": B_VOLTAGE_CELLS,
         "register_type": "battery",
         "extract": lambda value: (value >> 8) & 0xFF,
@@ -3169,7 +3163,7 @@ BATTERY_SENSOR_TYPES = [
         "visible": True,
     },
     {
-        "name": "Cell điện áp cao nhất",
+        "name": "Cell có điện áp cao nhất",
         "register": B_VOLTAGE_CELLS,
         "register_type": "battery",
         "extract": lambda value: value & 0xFF,
