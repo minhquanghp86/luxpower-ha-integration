@@ -300,4 +300,4 @@ SELECTBOX_TYPES = [
         "master_only": False,
         "device_group": "Lưới điện",
     },
-]
+] 
