@@ -1921,8 +1921,8 @@ SENSOR_TYPES = [
         "register_type": "calculated",
         "depends_on": [I_BMS_MIN_CELL_VOLT, I_BMS_MAX_CELL_VOLT],
         "extract": lambda registers, entry: (
-            round((registers.get(I_BMS_MAX_CELL_VOLT) - registers.get(I_BMS_MIN_CELL_VOLT)) / 1000.0, 3)
-            if registers.get(I_BMS_MAX_CELL_VOLT) is not None and registers.get(I_BMS_MIN_CELL_VOLT) is not None
+            round((registers.get(I_BMS_MAX_CELL_VOLT, 0) - registers.get(I_BMS_MIN_CELL_VOLT, 0)) / 1000.0, 3)
+            if registers.get(I_BMS_MAX_CELL_VOLT, 0) > 0 and registers.get(I_BMS_MIN_CELL_VOLT, 0) > 0
             else None
         ),
         "unit": "V",
@@ -3121,7 +3121,7 @@ BATTERY_SENSOR_TYPES = [
         "depends_on": [B_MAX_CELL_VOLTAGE, B_MIN_CELL_VOLTAGE],
         "extract": lambda registers, entry: (
             round((registers.get(B_MAX_CELL_VOLTAGE, 0) - registers.get(B_MIN_CELL_VOLTAGE, 0)) * 0.001, 3)
-            if registers.get(B_MAX_CELL_VOLTAGE) is not None and registers.get(B_MIN_CELL_VOLTAGE) is not None
+            if registers.get(B_MAX_CELL_VOLTAGE, 0) > 0 and registers.get(B_MIN_CELL_VOLTAGE, 0) > 0
             else None
         ),
         "unit": "V",
