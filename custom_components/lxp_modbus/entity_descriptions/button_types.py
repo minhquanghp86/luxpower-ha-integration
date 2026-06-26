@@ -4,7 +4,7 @@ from ..utils import get_bits, set_bits
 BUTTON_TYPES = [
     # Register 11: H_RESET_SETTINGS
     {
-        "name": "Khởi động lại biến tần",
+        "name": "Khởi động lại",
         "register": H_RESET_SETTINGS, # 11
         "register_type": "hold",
         "press": lambda orig: set_bits(orig, 7, 1, 1),
@@ -36,7 +36,7 @@ BUTTON_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Đặt lại khóa G100",
+        "name": "Mở khóa G100",
         "register": H_RESET_RECORD,
         "register_type": "hold",
         "icon": "mdi:lock-reset",
@@ -46,5 +46,4 @@ BUTTON_TYPES = [
         "master_only": True,
         "device_group": "Lưới điện",
     },
-
 ]
