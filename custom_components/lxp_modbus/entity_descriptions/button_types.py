@@ -5,7 +5,7 @@ BUTTON_TYPES = [
     # Register 11: H_RESET_SETTINGS
     {
         "name": "Khởi động lại",
-        "register": H_RESET_SETTINGS, # 11
+        "register": H_RESET_SETTINGS,  # 11
         "register_type": "hold",
         "press": lambda orig: set_bits(orig, 7, 1, 1),
         "icon": "mdi:restart-alert",
