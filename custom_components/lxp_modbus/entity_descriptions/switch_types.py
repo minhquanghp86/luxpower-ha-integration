@@ -4,7 +4,7 @@ from ..utils import get_bits, set_bits
 SWITCH_TYPES = [
     # Register 21: H_FUNCTION_ENABLE_1
     {
-        "name": "Dự phòng điện",
+        "name": "Chế độ dự phòng",
         "register": H_FUNCTION_ENABLE_1, # 21
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 0, 1),
@@ -17,7 +17,7 @@ SWITCH_TYPES = [
         "device_group": "Lưới điện",
     },
     {
-        "name": "Giảm tải khi tần số cao",
+        "name": "Giảm tải tần số cao",
         "register": H_FUNCTION_ENABLE_1, # 21
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 1, 1),
@@ -43,7 +43,7 @@ SWITCH_TYPES = [
         "device_group": "Lưới điện",
     },
     {
-        "name": "Sạc từ điện lưới (AC)",
+        "name": "Sạc từ lưới (AC)",
         "register": H_FUNCTION_ENABLE_1, # 21
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 7, 1),
@@ -55,7 +55,7 @@ SWITCH_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Chuyển EPS không gián đoạn",
+        "name": "Chuyển mạch EPS không ngắt",
         "register": H_FUNCTION_ENABLE_1, # 21
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 8, 1),
@@ -106,7 +106,7 @@ SWITCH_TYPES = [
     },
     # Register 110: H_FUNCTION_ENABLE_3
     {
-        "name": "Không phát lưới nhanh",
+        "name": "Ngắt phát lưới nhanh",
         "register": H_FUNCTION_ENABLE_3, # 110
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 1, 1),
@@ -118,7 +118,7 @@ SWITCH_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Lưới nhỏ (Micro-Grid)",
+        "name": "Vi lưới (Micro-Grid)",
         "register": H_FUNCTION_ENABLE_3, # 110
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 2, 1),
@@ -143,7 +143,7 @@ SWITCH_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Còi báo",
+        "name": "Chuông báo",
         "register": H_FUNCTION_ENABLE_3, # 110
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 7, 1),
@@ -155,7 +155,7 @@ SWITCH_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Dùng tải cùng lúc",
+        "name": "Tải đồng thời",
         "register": H_FUNCTION_ENABLE_3, # 110
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 10, 1),
@@ -192,7 +192,7 @@ SWITCH_TYPES = [
     },
     # Register 120: H_SYSTEM_ENABLE_2
     {
-        "name": "Half Hour AC Charge Start",
+        "name": "Bắt đầu sạc AC nửa giờ",
         "register": H_SYSTEM_ENABLE_2,   # 120
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 0, 1),
@@ -205,7 +205,7 @@ SWITCH_TYPES = [
     },
     # Register 179: H_FUNCTION_ENABLE_4
     {
-        "name": "Volt-Watt Function",
+        "name": "Chức năng Volt-Watt",
         "register": H_FUNCTION_ENABLE_4, # 179
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 4, 1),
@@ -243,7 +243,7 @@ SWITCH_TYPES = [
         "master_only": True,
     },
     {
-        "name": "PV Arc Detection",
+        "name": "Phát hiện hồ quang PV",
         "register": H_FUNCTION_ENABLE_4, # 179
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 12, 1),
@@ -256,7 +256,7 @@ SWITCH_TYPES = [
         "device_group": "Pin mặt trời",
     },
     {
-        "name": "On-Grid Always On",
+        "name": "On-Grid luôn bật",
         "register": H_FUNCTION_ENABLE_4, # 179
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 15, 1),
@@ -270,7 +270,7 @@ SWITCH_TYPES = [
     },
     # Register 233: H_FUNCTION_ENABLE_5
     {
-        "name": "Quick Charge Start",
+        "name": "Bắt đầu sạc nhanh",
         "register": H_FUNCTION_ENABLE_5, # 233
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 0, 1),
@@ -282,7 +282,7 @@ SWITCH_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Battery Backup",
+        "name": "Dự phòng pin",
         "register": H_FUNCTION_ENABLE_5, # 233
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 1, 1),
@@ -295,7 +295,7 @@ SWITCH_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Battery Maintenance",
+        "name": "Bảo trì pin",
         "register": H_FUNCTION_ENABLE_5, # 233
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 2, 1),
@@ -308,7 +308,7 @@ SWITCH_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "7-Day Schedule Enable",
+        "name": "Bật lịch trình 7 ngày",
         "register": H_FUNCTION_ENABLE_5, # 233
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 3, 1),
@@ -321,7 +321,7 @@ SWITCH_TYPES = [
         "device_group": "Lịch trình",
     },
     {
-        "name": "WattNode CT1 Direction",
+        "name": "Hướng CT1 WattNode",
         "register": H_WATTNODE_CT_DIRECTIONS,
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 0, 1),
@@ -333,7 +333,7 @@ SWITCH_TYPES = [
         "master_only": True,
     },
     {
-        "name": "WattNode CT2 Direction",
+        "name": "Hướng CT2 WattNode",
         "register": H_WATTNODE_CT_DIRECTIONS,
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 1, 1),
@@ -345,7 +345,7 @@ SWITCH_TYPES = [
         "master_only": True,
     },
     {
-        "name": "WattNode CT3 Direction",
+        "name": "Hướng CT3 WattNode",
         "register": H_WATTNODE_CT_DIRECTIONS,
         "register_type": "hold",
         "extract": lambda reg: get_bits(reg, 2, 1),
