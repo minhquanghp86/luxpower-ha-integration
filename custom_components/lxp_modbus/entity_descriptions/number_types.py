@@ -178,7 +178,7 @@ NUMBER_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Độ dốc khởi động mềm",
+        "name": "Tốc độ tăng công suất khởi động mềm",
         "register": H_POWER_SOFT_START_SLOPE,
         "register_type": "hold",
         "min": 1,
@@ -440,7 +440,7 @@ NUMBER_TYPES = [
 
     # --- Unmatched/Lead-Acid Battery ---
     {
-        "name": "Dung lượng pin không khớp",
+        "name": "Dung lượng pin (Cấu hình thủ công)",
         "register": H_BATTERY_CAPACITY,
         "register_type": "hold",
         "min": 0,
@@ -455,7 +455,7 @@ NUMBER_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Điện áp định mức pin không khớp",
+        "name": "Điện áp định mức pin (Thủ công)",
         "register": H_BATTERY_NOMINAL_VOLTAGE,
         "register_type": "hold",
         "min": 40.0,
@@ -485,7 +485,7 @@ NUMBER_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Chu kỳ cân bằng",
+        "name": "Chu kỳ cân bằng (axit-chì)",
         "register": H_EQUALIZATION_INTERVAL,
         "register_type": "hold",
         "min": 0,
@@ -499,7 +499,7 @@ NUMBER_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Thời gian cân bằng",
+        "name": "Thời gian cân bằng (axit-chì)",
         "register": H_EQUALIZATION_TIME,
         "register_type": "hold",
         "min": 0,
@@ -732,7 +732,7 @@ NUMBER_TYPES = [
     
     # --- New Number Entities from 2025-06-14 Documentation ---
     {
-        "name": "Trễ SOC pin",
+        "name": "Ngưỡng SOC phục hổi xả pin",
         "register": H_DELTA_SOC,
         "register_type": "hold",
         "min": 0,
@@ -747,7 +747,7 @@ NUMBER_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Trễ điện áp pin",
+        "name": "Ngưỡng điện áp phục hồi xả pin",
         "register": H_DELTA_VOLT,
         "register_type": "hold",
         "min": 2.0,
@@ -776,7 +776,7 @@ NUMBER_TYPES = [
         "master_only": True,
     },
     {
-        "name": "Ngưỡng SOC phục hồi xả",
+        "name": "SOC phục hồi xả",
         "register": H_DISCHARGE_RECOVERY,
         "register_type": "hold",
         "min": 5, # As per documentation
@@ -793,7 +793,7 @@ NUMBER_TYPES = [
         "device_group": "Pin",
     },
     {
-        "name": "Ngưỡng điện áp phục hồi xả",
+        "name": "Điện áp phục hồi xả",
         "register": H_DISCHARGE_RECOVERY,
         "register_type": "hold",
         "min": 1.0, # As per documentation
@@ -866,7 +866,7 @@ NUMBER_TYPES = [
     },
     # --- New Registers from Documentation Update (2025.12.02) ---
     {
-        "name": "Ngưỡng NPE",
+        "name": "Ngưỡng điện áp N-PE",
         "register": H_NPE_THRESHOLD,
         "register_type": "hold",
         "min": 0.0,
@@ -2514,7 +2514,7 @@ NUMBER_TYPES = [
         "master_only": False,
     },
     {
-        "name": "Bù tải cụ thể",
+        "name": "Bù công suất tải cố định",
         "register": H_SPEC_LOAD_COMPENSATE,
         "register_type": "hold",
         "min": 0,
